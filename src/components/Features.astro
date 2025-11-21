@@ -1,69 +1,126 @@
 ---
-const features = [
+const skills = [
 	{
-		title: 'Blazing Fast',
-		description: 'Built for speed with zero JavaScript by default. Your site loads instantly.',
-		icon: '🚀'
+		category: 'Frontend',
+		items: ['React.js', 'Next.js 15', 'TypeScript', 'TailwindCSS', 'HTML5/CSS3'],
+		icon: '💻'
 	},
 	{
-		title: 'Modern Tooling',
-		description: 'TypeScript, Tailwind CSS, and modern frameworks supported out of the box.',
-		icon: '🛠️'
+		category: 'Backend',
+		items: ['.NET 9', 'C#', 'ASP.NET Core', 'RESTful APIs', 'Clean Architecture'],
+		icon: '⚙️'
 	},
 	{
-		title: 'SEO Optimized',
-		description: 'Automatic sitemaps, RSS feeds, and pagination for better search rankings.',
-		icon: '🔍'
+		category: 'Database',
+		items: ['PostgreSQL', 'SQL Server', 'Redis', 'Oracle', 'MongoDB'],
+		icon: '🗄️'
 	},
 	{
-		title: 'Component Islands',
-		description: 'Hydrate only the interactive parts of your page for maximum performance.',
-		icon: '🏝️'
+		category: 'Creative & 3D',
+		items: ['Three.js', 'WebGL', '3D Projection', 'Creative Coding', 'GSAP'],
+		icon: '🎨'
+	}
+];
+
+const projects = [
+	{
+		title: '@underverse-ui/underverse',
+		description: 'A comprehensive UI library available on NPM. Designed for modern web applications with focus on performance and aesthetics.',
+		tags: ['NPM', 'UI Library', 'TypeScript'],
+		link: 'https://www.npmjs.com/package/@underverse-ui/underverse?activeTab=readme'
 	},
 	{
-		title: 'Content Collections',
-		description: 'Type-safe content management for your Markdown and MDX files.',
-		icon: '📚'
+		title: 'Adoria (Facebook Clone)',
+		description: 'A full-featured social media platform with real-time messaging, notifications, and group management.',
+		tags: ['Next.js 15', '.NET 9', 'SignalR', 'PostgreSQL'],
+		link: 'https://adoria.aistudio.com.vn'
 	},
 	{
-		title: 'Edge Ready',
-		description: 'Deploy anywhere, from static hosts to edge networks globally.',
-		icon: '🌍'
+		title: 'Flex Collection',
+		description: 'Internal tool for LpBank employees. Managed data collection and processing workflows.',
+		tags: ['ReactJS', '.NET 5', 'Oracle'],
+		link: '#'
 	}
 ];
 ---
 
 <section id="features" class="py-20 bg-slate-900 relative">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-16">
-			<h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-				Everything you need to build
-			</h2>
-			<p class="text-xl text-gray-400 max-w-2xl mx-auto">
-				A complete toolkit for building the next generation of web applications.
-			</p>
+		
+		<!-- Skills Section -->
+		<div class="mb-24">
+			<div class="text-center mb-16">
+				<h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+					Technical Expertise
+				</h2>
+				<p class="text-xl text-gray-400 max-w-2xl mx-auto">
+					A solid foundation in both frontend and backend technologies.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+				{skills.map(skill => (
+					<div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1">
+						<div class="text-4xl mb-4">{skill.icon}</div>
+						<h3 class="text-xl font-bold text-white mb-4">{skill.category}</h3>
+						<ul class="space-y-2">
+							{skill.items.map(item => (
+								<li class="text-gray-400 flex items-center">
+									<span class="w-1.5 h-1.5 bg-purple-500 rounded-full mr-2"></span>
+									{item}
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
 		</div>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-			{features.map(feature => (
-				<div class="group relative p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-purple-500/20">
-					<div class="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
-					
-					<div class="relative z-10">
-						<div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-							{feature.icon}
+		<!-- Projects Section -->
+		<div id="projects">
+			<div class="text-center mb-16">
+				<h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+					Featured Projects
+				</h2>
+				<p class="text-xl text-gray-400 max-w-2xl mx-auto">
+					Highlights of my recent work and contributions.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{projects.map(project => (
+					<div class="group relative p-8 rounded-2xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-purple-500/20 flex flex-col h-full">
+						<div class="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+						
+						<div class="relative z-10 flex-grow">
+							<h3 class="text-xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">
+								{project.title}
+							</h3>
+							
+							<p class="text-gray-400 leading-relaxed mb-6">
+								{project.description}
+							</p>
+
+							<div class="flex flex-wrap gap-2 mb-6">
+								{project.tags.map(tag => (
+									<span class="px-3 py-1 rounded-full bg-white/10 text-xs text-gray-300 border border-white/5">
+										{tag}
+									</span>
+								))}
+							</div>
 						</div>
-						
-						<h3 class="text-xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">
-							{feature.title}
-						</h3>
-						
-						<p class="text-gray-400 leading-relaxed">
-							{feature.description}
-						</p>
+
+						<div class="relative z-10 mt-auto">
+							<a href={project.link} target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-purple-400 hover:text-purple-300 font-medium transition-colors">
+								View Project
+								<svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+								</svg>
+							</a>
+						</div>
 					</div>
-				</div>
-			))}
+				))}
+			</div>
 		</div>
 	</div>
 </section>
