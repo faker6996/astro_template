@@ -1,0 +1,80 @@
+---
+const navItems = [
+	{ label: 'Features', href: '#features' },
+	{ label: 'About', href: '#about' },
+	{ label: 'Pricing', href: '#pricing' },
+	{ label: 'Contact', href: '#contact' },
+];
+---
+
+<header class="fixed w-full top-0 z-50 transition-all duration-300" id="main-header">
+	<div class="absolute inset-0 bg-slate-900/70 backdrop-blur-md border-b border-white/10"></div>
+	<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="flex justify-between items-center h-20">
+			<!-- Logo -->
+			<div class="flex-shrink-0 flex items-center">
+				<a href="/" class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+					AstroLaunch
+				</a>
+			</div>
+
+			<!-- Desktop Navigation -->
+			<nav class="hidden md:flex space-x-8">
+				{navItems.map(item => (
+					<a href={item.href} class="text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium">
+						{item.label}
+					</a>
+				))}
+			</nav>
+
+			<!-- CTA Button -->
+			<div class="hidden md:flex items-center">
+				<a href="#" class="px-5 py-2.5 rounded-full bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium transition-all duration-200 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40">
+					Get Started
+				</a>
+			</div>
+
+			<!-- Mobile menu button -->
+			<div class="md:hidden flex items-center">
+				<button type="button" class="text-gray-300 hover:text-white focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+					<span class="sr-only">Open main menu</span>
+					<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+					</svg>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Mobile menu -->
+	<div class="md:hidden hidden bg-slate-900/95 backdrop-blur-xl border-b border-white/10" id="mobile-menu">
+		<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+			{navItems.map(item => (
+				<a href={item.href} class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-white/10">
+					{item.label}
+				</a>
+			))}
+			<a href="#" class="block w-full text-center mt-4 px-5 py-3 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-medium">
+				Get Started
+			</a>
+		</div>
+	</div>
+</header>
+
+<script>
+	const header = document.getElementById('main-header');
+	const mobileMenuButton = header?.querySelector('button');
+	const mobileMenu = document.getElementById('mobile-menu');
+
+	mobileMenuButton?.addEventListener('click', () => {
+		mobileMenu?.classList.toggle('hidden');
+	});
+
+	window.addEventListener('scroll', () => {
+		if (window.scrollY > 10) {
+			header?.classList.add('shadow-lg');
+		} else {
+			header?.classList.remove('shadow-lg');
+		}
+	});
+</script>
