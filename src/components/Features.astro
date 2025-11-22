@@ -30,10 +30,17 @@ const projects = [
 		link: 'https://www.npmjs.com/package/@underverse-ui/underverse?activeTab=readme'
 	},
 	{
-		title: 'Adoria (Facebook Clone)',
-		description: 'A full-featured social media platform with real-time messaging, notifications, and group management.',
-		tags: ['Next.js 15', '.NET 9', 'SignalR', 'PostgreSQL'],
-		link: 'https://adoria.aistudio.com.vn'
+		title: 'Flower Shop E-commerce',
+		description: 'A modern e-commerce platform built with Next.js 15 App Router, featuring real-time updates, comprehensive API documentation, and a robust CI/CD pipeline.',
+		tags: ['Next.js 15', 'React 19', 'PostgreSQL', 'Docker', 'Redis'],
+		link: 'https://jojoflowers.vn/'
+	},
+
+	{
+		title: 'AI Studio',
+		description: 'A freelance platform for crowd workers to process point cloud images and 3D data.',
+		tags: ['Java Spring Boot', 'JSP', 'jQuery', 'HTML/CSS'],
+		link: 'https://ai-studio.co.kr'
 	},
 	{
 		title: 'Flex Collection',
@@ -87,9 +94,9 @@ const projects = [
 				</p>
 			</div>
 
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-				{projects.map(project => (
-					<div class="group relative p-8 rounded-2xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-purple-500/20 flex flex-col h-full">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+				{projects.map((project, index) => (
+					<div class={`group relative p-8 rounded-2xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-purple-500/20 flex flex-col h-full ${index >= 3 ? 'hidden' : ''} project-item`}>
 						<div class="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
 						
 						<div class="relative z-10 flex-grow">
@@ -121,6 +128,30 @@ const projects = [
 					</div>
 				))}
 			</div>
+
+			<div class="mt-12 text-center">
+				<a href="#" id="show-more-btn" class="inline-flex items-center px-8 py-3 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300 font-medium hover:bg-purple-500/20 transition-all duration-300">
+					Show More
+					<svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+					</svg>
+				</a>
+			</div>
 		</div>
 	</div>
 </section>
+
+<script>
+	const showMoreBtn = document.getElementById('show-more-btn');
+	const hiddenProjects = document.querySelectorAll('.project-item.hidden');
+
+	if (showMoreBtn) {
+		showMoreBtn.addEventListener('click', (e) => {
+			e.preventDefault();
+			hiddenProjects.forEach(project => {
+				project.classList.remove('hidden');
+			});
+			showMoreBtn.style.display = 'none';
+		});
+	}
+</script>
