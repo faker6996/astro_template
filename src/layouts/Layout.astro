@@ -19,8 +19,16 @@ import '../styles/global.css';
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<script is:inline>
+			// On page load or when changing themes, best to add inline in `head` to avoid FOUC
+			if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
+		</script>
 	</head>
-	<body class="bg-slate-900 text-white font-['Inter'] antialiased selection:bg-purple-500 selection:text-white">
+	<body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white font-['Inter'] antialiased selection:bg-purple-500 selection:text-white">
 		<slot />
 	</body>
 </html>
@@ -39,8 +47,10 @@ import '../styles/global.css';
 	}
 	html {
 		font-family: 'Inter', system-ui, sans-serif;
-		background: #13151a;
 		background-size: 224px;
+	}
+	html.dark {
+		background: #13151a;
 	}
 	code {
 		font-family:
