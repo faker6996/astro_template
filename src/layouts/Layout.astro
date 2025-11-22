@@ -30,6 +30,28 @@ import '../styles/global.css';
 	</head>
 	<body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white font-['Inter'] antialiased selection:bg-purple-500 selection:text-white">
 		<slot />
+		<script>
+			// Simple Intersection Observer for scroll animations
+			document.addEventListener('DOMContentLoaded', () => {
+				const observerOptions = {
+					root: null,
+					rootMargin: '0px',
+					threshold: 0.1
+				};
+
+				const observer = new IntersectionObserver((entries, observer) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('visible');
+							observer.unobserve(entry.target); // Only animate once
+						}
+					});
+				}, observerOptions);
+
+				const revealElements = document.querySelectorAll('.reveal');
+				revealElements.forEach(el => observer.observe(el));
+			});
+		</script>
 	</body>
 </html>
 
@@ -63,4 +85,21 @@ import '../styles/global.css';
 			Courier New,
 			monospace;
 	}
+
+	/* Scroll Reveal Animation */
+	.reveal {
+		opacity: 0;
+		transform: translateY(30px);
+		transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+	}
+
+	.reveal.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	/* Staggered delays */
+	.delay-100 { transition-delay: 100ms; }
+	.delay-200 { transition-delay: 200ms; }
+	.delay-300 { transition-delay: 300ms; }
 </style>

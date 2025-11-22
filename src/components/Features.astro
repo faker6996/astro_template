@@ -56,7 +56,7 @@ const projects = [
 		
 		<!-- Skills Section -->
 		<div class="mb-24">
-			<div class="text-center mb-16">
+			<div class="text-center mb-16 reveal">
 				<h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
 					Technical Expertise
 				</h2>
@@ -66,9 +66,9 @@ const projects = [
 			</div>
 
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-				{skills.map(skill => (
-					<div class="p-6 rounded-2xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1 shadow-sm dark:shadow-none">
-						<div class="text-4xl mb-4">{skill.icon}</div>
+				{skills.map((skill, index) => (
+					<div class={`p-6 rounded-2xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-500/10 shadow-sm dark:shadow-none reveal delay-${(index % 4) * 100}`}>
+						<div class="text-4xl mb-4 transform transition-transform duration-300 hover:scale-110 inline-block">{skill.icon}</div>
 						<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">{skill.category}</h3>
 						<ul class="space-y-2">
 							{skill.items.map(item => (
@@ -85,7 +85,7 @@ const projects = [
 
 		<!-- Projects Section -->
 		<div id="projects">
-			<div class="text-center mb-16">
+			<div class="text-center mb-16 reveal">
 				<h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
 					Featured Projects
 				</h2>
@@ -96,8 +96,8 @@ const projects = [
 
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
 				{projects.map((project, index) => (
-					<div class={`group relative p-8 rounded-2xl bg-white dark:bg-transparent dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 border border-gray-200 dark:border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-purple-500/20 flex flex-col h-full ${index >= 3 ? 'hidden' : ''} project-item shadow-sm dark:shadow-none`}>
-						<div class="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+					<div class={`group relative p-8 rounded-2xl bg-white dark:bg-transparent dark:bg-gradient-to-br dark:from-white/5 dark:to-white/0 border border-gray-200 dark:border-white/10 hover:border-purple-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 flex flex-col h-full ${index >= 3 ? 'hidden' : 'reveal'} project-item shadow-sm dark:shadow-none delay-${(index % 3) * 100}`}>
+						<div class="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
 						
 						<div class="relative z-10 flex-grow">
 							<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-300 transition-colors">
